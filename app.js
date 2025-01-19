@@ -5,17 +5,15 @@ function numberGuessingGame() {
   console.log("I've picked number between 1 and 100. Can you guess it?");
 
   const random = Math.trunc(Math.random() * 100 + 1);
-  let attempt = 0,
-    choice = 0;
+  let attempt = 0;
   let guessCorrectly = false;
 
-  function guessingGame() {
-    const guess = parseInt(prompt("Enter your guess(1-100):"));
+  while (!guessCorrectly) {
+    let guess = parseInt(prompt("Enter your guess(1-100):"));
 
     if (isNaN(guess) || guess < 1 || guess > 100) {
       console.log("Please enter a valid number between 1 and 100");
-      guessNumber();
-      return;
+      continue;
     }
 
     attempt++;
@@ -28,17 +26,11 @@ function numberGuessingGame() {
       guessCorrectly = true;
     } else if (guess > random) {
       console.log("Too High");
-      guessingGame();
     } else {
       console.log("Too Low");
-      guessingGame();
     }
   }
 
-  guessingGame();
-
-  if (guessCorrectly) {
-    console.log("Thank you for playing!");
-  }
+  console.log("Thank you for playing!");
 }
 numberGuessingGame();
